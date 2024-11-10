@@ -3,7 +3,6 @@ import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, ScrollView,
 import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window');
-const nen1Width = width * 0.3; // Giả sử Nen1 chiếm 30% chiều rộng màn hình
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -12,10 +11,18 @@ const HomeScreen = () => {
     navigation.navigate('Screen03');
   };
 
+  const handlePressAlbum = () => {
+    navigation.navigate('Screen05');
+  };
+
+  const handleSearchBarPress = () => {
+    navigation.navigate('Screen06');
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* Hàng trên cùng với logo và hình ảnh */}
+       
         <View style={styles.topRow}>
           <Image source={require('../assets/image/HomeAudioListing/Image36.png')} style={styles.logo} />
           <View style={styles.topImages}>
@@ -24,25 +31,28 @@ const HomeScreen = () => {
           </View>
         </View>
 
-        {/* Header */}
+       
         <View style={styles.header}>
           <Text style={styles.greeting}>Good morning,</Text>
           <Text style={styles.userName}>Ashley Scott</Text>
-          <TextInput 
-            style={styles.searchBar} 
-            placeholder="What you want to listen to" 
-            placeholderTextColor="#999" 
-          />
+          <TouchableOpacity onPress={handleSearchBarPress}>
+            <TextInput 
+              style={styles.searchBar} 
+              placeholder="What you want to listen to" 
+              placeholderTextColor="#999" 
+              editable={false} 
+            />
+          </TouchableOpacity>
         </View>
 
-        {/* Suggestions Section */}
+    
         <Text style={styles.sectionTitle}>Suggestions for you</Text>
         <ScrollView horizontal contentContainerStyle={styles.horizontalScroll}>
           <Image source={require('../assets/image/HomeAudioListing/Container26.png')} style={styles.suggestionImage} />
           <Image source={require('../assets/image/HomeAudioListing/Container27.png')} style={styles.suggestionImage} />
         </ScrollView>
 
-        {/* Charts Section */}
+     
         <Text style={styles.sectionTitle}>Charts</Text>
         <ScrollView horizontal contentContainerStyle={styles.horizontalScroll}>
           <TouchableOpacity onPress={handlePress}>
@@ -52,11 +62,13 @@ const HomeScreen = () => {
           <Image source={require('../assets/image/HomeAudioListing/Container33.png')} style={styles.chartImage} />
         </ScrollView>
 
-        {/* Trending Albums Section */}
+    
         <Text style={styles.sectionTitle}>Trending albums</Text>
         <ScrollView horizontal contentContainerStyle={styles.horizontalScroll}>
           <View style={styles.albumCard}>
-            <Image source={require('../assets/image/HomeAudioListing/Image45.png')} style={styles.albumImage} />
+            <TouchableOpacity onPress={handlePressAlbum}>
+              <Image source={require('../assets/image/HomeAudioListing/Image45.png')} style={styles.albumImage} />
+            </TouchableOpacity>
             <Text style={styles.albumTitle}>ME</Text>
             <Text style={styles.albumArtist}>Jessica Gonzalez</Text>
           </View>
@@ -72,7 +84,7 @@ const HomeScreen = () => {
           </View>
         </ScrollView>
 
-        {/* Popular Artists Section */}
+     
         <Text style={styles.sectionTitle}>Popular artists</Text>
         <ScrollView horizontal contentContainerStyle={styles.horizontalScroll}>
           <View style={styles.artistCard}>
@@ -99,7 +111,7 @@ const HomeScreen = () => {
         </ScrollView>
       </ScrollView>
 
-      {/* Taskbar cố định ở dưới cùng */}
+     
       <View style={styles.taskbar}>
         <Image source={require('../assets/image/ArtistProfile/TabBarMenu5.png')} style={styles.taskbarImage} />
       </View>
@@ -124,16 +136,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   logo: {
-    width: nen1Width * 0.1,
-    height: nen1Width * 0.1,
+    width: width * 0.1,
+    height: width * 0.1,
     resizeMode: 'contain',
   },
   topImages: {
     flexDirection: 'row',
   },
   topImage: {
-    width: nen1Width * 0.08,
-    height: nen1Width * 0.08,
+    width: width * 0.08,
+    height: width * 0.08,
     marginLeft: 10,
     resizeMode: 'contain',
   },
@@ -168,43 +180,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  suggestions: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    marginBottom: 10,
-  },
   suggestionImage: {
-    width: nen1Width * 0.25,
-    height: nen1Width * 0.15,
+    width: width * 0.25,
+    height: width * 0.15,
     borderRadius: 8,
     marginHorizontal: 5,
-  },
-  charts: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    marginBottom: 10,
   },
   chartImage: {
-    width: nen1Width * 0.2,
-    height: nen1Width * 0.2,
+    width: width * 0.2,
+    height: width * 0.2,
     borderRadius: 8,
     marginHorizontal: 5,
-  },
-  albums: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    marginBottom: 10,
   },
   albumCard: {
     alignItems: 'center',
     marginHorizontal: 5,
   },
   albumImage: {
-    width: nen1Width * 0.2,
-    height: nen1Width * 0.2,
+    width: width * 0.2,
+    height: width * 0.2,
     borderRadius: 8,
   },
   albumTitle: {
@@ -216,20 +210,14 @@ const styles = StyleSheet.create({
     fontSize: 6,
     color: '#777',
   },
-  artists: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    marginBottom: 10,
-  },
   artistCard: {
     alignItems: 'center',
     marginHorizontal: 5,
   },
   artistImage: {
-    width: nen1Width * 0.12,
-    height: nen1Width * 0.12,
-    borderRadius: nen1Width * 0.06,
+    width: width * 0.12,
+    height: width * 0.12,
+    borderRadius: width * 0.06,
   },
   followButton: {
     backgroundColor: '#000',

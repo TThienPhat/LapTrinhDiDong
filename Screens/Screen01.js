@@ -17,15 +17,15 @@ export default function Screen01() {
 
   return (
     <View style={styles.container}>
-      {/* Hình ảnh Nen1 ở giữa màn hình */}
+      
       <Image
         source={require('../assets/image/LaunchScreen/Nen1.png')}
         style={styles.mainImage}
       />
 
-      {/* Các đối tượng chồng lên Nen1 */}
+      
       <View style={styles.overlayContainer}>
-        {/* Logo hoặc biểu tượng âm nhạc */}
+       
         <View style={styles.logoContainer}>
           <Image
             source={require('../assets/image/LaunchScreenPremium/Image113.png')}
@@ -33,18 +33,18 @@ export default function Screen01() {
           />
         </View>
 
-        {/* Phần chữ "Your music, Your artists" */}
+       
         <View style={styles.textContainer}>
           <Text style={styles.title}>Your music</Text>
           <Text style={styles.title}>Your artists</Text>
         </View>
 
-        {/* Nút "Create an account" */}
+     
         <TouchableOpacity style={styles.createAccountButton} onPress={handlePress}>
           <Text style={styles.buttonText}>Create an account</Text>
         </TouchableOpacity>
 
-        {/* Nút "I already have an account" */}
+     
         <TouchableOpacity style={styles.existingAccountButton} onPress={handlePress}>
           <Text style={styles.existingButtonText}>I already have an account</Text>
         </TouchableOpacity>
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   mainImage: {
-    width: '30%',
-    height: '100%',
+    width: '100%', 
+    height: '100%', 
     position: 'absolute',
     zIndex: -1,
   },

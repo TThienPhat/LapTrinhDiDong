@@ -3,7 +3,6 @@ import { View, Image, StyleSheet, Dimensions, Text, TouchableOpacity } from 'rea
 import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window');
-const nen1Width = width * 0.3; // Giả sử Nen1 chiếm 30% chiều rộng màn hình
 
 const Screen03 = () => {
   const navigation = useNavigation();
@@ -88,8 +87,7 @@ const Screen03 = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: nen1Width,
-    height: height,
+    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
@@ -101,13 +99,13 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   topImage: {
-    width: nen1Width * 0.1,
-    height: nen1Width * 0.1,
+    width: width * 0.1,
+    height: width * 0.1,
     resizeMode: 'contain',
   },
   fullWidthImage: {
     width: '100%',
-    height: nen1Width * 0.2,
+    height: width * 0.2,
     resizeMode: 'contain',
     marginVertical: 5,
   },
@@ -124,8 +122,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   image: {
-    width: nen1Width * 0.15,
-    height: nen1Width * 0.15,
+    width: width * 0.15,
+    height: width * 0.15,
     resizeMode: 'contain',
   },
   infoContainer: {
